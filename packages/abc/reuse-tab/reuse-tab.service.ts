@@ -32,7 +32,7 @@ export class ReuseTabService implements OnDestroy {
 
   /** 当前路由地址 */
   get curUrl() {
-    return this.getUrl(this.injector.get(ActivatedRoute).snapshot);
+    return this.getUrl(this.route.snapshot);
   }
 
   /** 允许最多复用多少个页面，取值范围 `2-100` */
@@ -346,6 +346,7 @@ export class ReuseTabService implements OnDestroy {
   constructor(
     private injector: Injector,
     @Optional() private menuService: MenuService,
+     private route:ActivatedRoute
   ) {}
 
   private getMenu(url: string) {
